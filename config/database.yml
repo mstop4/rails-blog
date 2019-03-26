@@ -1,19 +1,25 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  username: root
-  password: password
-  host: 127.0.0.1
   port: 3306
 
 development:
   <<: *default
-  database: rails_blog
+  database: <%= ENV['DEV_DB_NAME'] %>
+  username: <%= ENV['DEV_DB_USERNAME'] %>
+  password: <%= ENV['DEV_DB_PASSWORD'] %>
+  host: <%= ENV['DEV_DB_HOST'] %>
 
 test:
   <<: *default
-  database: rails_blog_test
+  database: <%= ENV['TEST_DB_NAME'] %>
+  username: <%= ENV['TEST_DB_USERNAME'] %>
+  password: <%= ENV['TEST_DB_PASSWORD'] %>
+  host: <%= ENV['TEST_DB_HOST'] %>
 
 production:
   <<: *default
-  database: production_db_name
+  database: <%= ENV['PROD_DB_NAME'] %>
+  username: <%= ENV['PROD_DB_USERNAME'] %>
+  password: <%= ENV['PROD_DB_PASSWORD'] %>
+  host: <%= ENV['PROD_DB_HOST'] %>
